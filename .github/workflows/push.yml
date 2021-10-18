@@ -44,5 +44,7 @@ jobs:
         body: |
           {
             "msgtype": "text",
-            "content": "兄弟们，咱们的图标更新啦！\n请使用 npm update @shipout/icon 更新。\n在线查看图标：http://frontend.shipout.tech/shipout-ui/#/zh-CN/component/icon"
+            "text": {
+              "content": "兄弟们，咱们的图标更新啦！\n请使用 npm update @shipout/icon 更新。\n在线查看图标：http://frontend.shipout.tech/shipout-ui/#/zh-CN/component/icon"
+            }
           }
