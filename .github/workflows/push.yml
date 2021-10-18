@@ -33,17 +33,16 @@ jobs:
         build_dir: dist
       env:
         GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-    - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" > ~/.npmrc
-    - run: yarn publish
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-    - name: WeChat Work notification
-      uses: chf007/action-wechat-work@master
-      env:
-        WECHAT_WORK_BOT_WEBHOOK: ${{secrets.WECHAT_WORK_BOT_WEBHOOK}}
+#     - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" > ~/.npmrc
+#     - run: yarn publish
+#       env:
+#         NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+    - name: Ding Work notification
+      uses: zcong1993/actions-ding@master
       with:
-        msgtype: text
-        content: |
-          兄弟们，咱们的图标更新啦！
-          请使用 yarn upgrade juuust-vue-icon --latest 更新。
-          在线查看图标：https://leadream.github.io/juuust-vue-icon/
+        dingToken: ${{secrets.DING_WORK_BOT_WEBHOOK}}
+        body: |
+          {
+            "msgtype": "text",
+            "content": "兄弟们，咱们的图标更新啦！\n请使用 npm update @shipout/icon 更新。\n在线查看图标：http://frontend.shipout.tech/shipout-ui/#/zh-CN/component/icon"
+          }
