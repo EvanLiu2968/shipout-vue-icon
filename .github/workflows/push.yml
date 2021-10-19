@@ -41,6 +41,7 @@ jobs:
       uses: zcong1993/actions-ding@master
       with:
         dingToken: ${{secrets.DING_WORK_BOT_WEBHOOK}}
+        secret: ${{ secrets.DING_SECRET }}
         body: |
           {
             "msgtype": "text",
