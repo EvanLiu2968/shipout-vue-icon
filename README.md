@@ -1,4 +1,4 @@
-# juuust-vue-icon
+# @shipout/vue-icon
 
 ## Project setup
 ```
