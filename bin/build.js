@@ -69,8 +69,9 @@ generateIndex()
 Object
   .keys(icons)
   .map(key => icons[key])
-  .forEach(({name}) => {
-    generateIconCode({name})
+  .forEach((icon) => {
+    console.log(JSON.stringify(icon, null, 2));
+    generateIconCode({name: icon.name})
       .then(({ComponentName, name}) => {
         appendToIndex({ComponentName, name})
       })
