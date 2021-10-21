@@ -1,9 +1,9 @@
-const getAttrs = (style) => {
+const getAttrs = (style, iconData) => {
   const baseAttrs = {
     'xmlns': 'http://www.w3.org/2000/svg',
     ':width': 'size',
     ':height': 'size',
-    'viewBox': '0 0 24 24',
+    'viewBox': `0 0 ${iconData.width} ${iconData.height}`,
     'aria-hidden': 'true',
     'v-on': '$listeners'
   }
@@ -33,8 +33,7 @@ const getElementCode = (ComponentName, attrs, svgCode) => `
       name: "Icon${ComponentName}",
       props: {
         size: {
-          type: Number,
-          default: 16
+          type: Number
         },
         color: {
           type: String,
