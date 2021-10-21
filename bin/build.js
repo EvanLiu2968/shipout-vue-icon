@@ -39,16 +39,16 @@ const attrsToString = (attrs, style) => {
 };
 
 // generate icon code separately
-const generateIconCode = async ({name}) => {
-  const names = parseName(name, defaultStyle)
+const generateIconCode = async (icon) => {
+  const names = parseName(icon.name, defaultStyle)
   const location = path.join(rootDir, 'src/svg', `${names.name}.svg`)
   const destination = path.join(rootDir, 'src/icons', `${names.name}.vue`)
   const code = fs.readFileSync(location)
   const svgCode = await processSvg(code)
   const ComponentName = names.componentName
   console.log(JSON.stringify(names, null, 2));
-  console.log(JSON.stringify(getAttrs(names.style), null, 2));
-  const component = getElementCode(ComponentName, attrsToString(getAttrs(names.style), names.style), svgCode)
+  console.log(JSON.stringify(getAttrs(names.style, icon), null, 2));
+  const component = getElementCode(ComponentName, attrsToString(getAttrs(names.style, icon), names.style), svgCode)
 
   fs.writeFileSync(destination, component, 'utf-8');
 
@@ -71,8 +71,8 @@ generateIndex()
 Object
   .keys(icons)
   .map(key => icons[key])
-  .forEach(({name}) => {
-    generateIconCode({name})
+  .forEach((icon) => {
+    generateIconCode(icon)
       .then(({ComponentName, name}) => {
         appendToIndex({ComponentName, name})
       })
