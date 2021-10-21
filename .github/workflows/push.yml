@@ -37,15 +37,15 @@ jobs:
     - run: yarn publish --access public
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-    - name: Ding Work notification
-      uses: zcong1993/actions-ding@master
-      with:
-        dingToken: ${{secrets.DING_WORK_BOT_WEBHOOK}}
-        secret: ${{ secrets.DING_SECRET }}
-        body: |
-          {
-            "msgtype": "text",
-            "text": {
-              "content": "兄弟们，咱们的图标更新啦！\n请使用 npm update @shipout/icon 更新。\n在线查看图标：http://frontend.shipout.tech/shipout-ui/#/zh-CN/component/icon"
-            }
-          }
+#     - name: Ding Work notification
+#       uses: zcong1993/actions-ding@master
+#       with:
+#         dingToken: ${{secrets.DING_WORK_BOT_WEBHOOK}}
+#         secret: ${{ secrets.DING_SECRET }}
+#         body: |
+#           {
+#             "msgtype": "text",
+#             "text": {
+#               "content": "兄弟们，咱们的图标更新啦！\n请使用 npm update @shipout/icon 更新。\n在线查看图标：http://frontend.shipout.tech/shipout-ui/#/zh-CN/component/icon"
+#             }
+#           }
