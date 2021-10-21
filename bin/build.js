@@ -48,7 +48,7 @@ const generateIconCode = async (icon) => {
   const ComponentName = names.componentName
   console.log(JSON.stringify(names, null, 2));
   console.log(JSON.stringify(getAttrs(names.style, icon), null, 2));
-  const component = getElementCode(ComponentName, attrsToString(getAttrs(names.style, icon), names.style), svgCode)
+  const component = getElementCode(ComponentName, attrsToString(getAttrs(names.style, icon), names.style), icon, svgCode)
 
   fs.writeFileSync(destination, component, 'utf-8');
 
