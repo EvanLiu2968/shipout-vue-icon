@@ -46,8 +46,7 @@ const generateIconCode = async (icon) => {
   const code = fs.readFileSync(location)
   const svgCode = await processSvg(code)
   const ComponentName = names.componentName
-  console.log(JSON.stringify(names, null, 2));
-  console.log(JSON.stringify(getAttrs(names.style, icon), null, 2));
+  console.log(JSON.stringify(icon, null, 2));
   const component = getElementCode(ComponentName, attrsToString(getAttrs(names.style, icon), names.style), icon, svgCode)
 
   fs.writeFileSync(destination, component, 'utf-8');
