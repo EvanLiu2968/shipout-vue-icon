@@ -46,7 +46,7 @@ jobs:
           {
             "msgtype": "markdown",
             "markdown": {
-              "title": "Design System Icon更新提示"
+              "title": "Design System Icon更新提示",
               "text": "#### Design System Icon更新啦\n###### 在项目中请使用 ```npm update @shipout/icon``` 进行更新\n###### 在线查看Icon：[http://frontend.shipout.tech/shipout-ui/#/zh-CN/component/icon](http://frontend.shipout.tech/shipout-ui/#/zh-CN/component/icon)"
             }
           }
