@@ -1,8 +1,6 @@
 const getAttrs = (style, iconData) => {
   const baseAttrs = {
     'xmlns': 'http://www.w3.org/2000/svg',
-    'width': iconData.width,
-    'height': iconData.height,
     'viewBox': `0 0 ${iconData.width} ${iconData.height}`,
     'aria-hidden': 'true',
     'v-on': '$listeners'
@@ -20,7 +18,7 @@ const getAttrs = (style, iconData) => {
   return Object.assign({}, baseAttrs, style==='fill' ? fillAttrs : strokeAttrs)
 }
   
-const getElementCode = (ComponentName, attrs, svgCode) => `
+const getElementCode = (ComponentName, attrs, iconData, svgCode) => `
   <template>
     <svg
       ${attrs}
@@ -44,8 +42,8 @@ const getElementCode = (ComponentName, attrs, svgCode) => `
       },
       data() {
         return {
-          width: attrs.width,
-          height: attrs.height
+          width: ${iconData.width},
+          height: ${iconData.height}
         };
       }
     };
