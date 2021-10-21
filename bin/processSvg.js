@@ -1,4 +1,4 @@
-const { optimize } = require('svgo');
+const Svgo = require('svgo');
 const cheerio = require('cheerio')
 const framework = process.env.npm_package_config_framework || 'react'
 
@@ -16,16 +16,18 @@ function CamelCase(str) {
  * @param {string} svg - An SVG string.
  * @returns {Promise<string>}
  */
-function optimizeSVG(svg) {
+function optimize(svg) {
+  const svgo = new Svgo({
+    plugins: [
+      { convertShapeToPath: false },
+      { mergePaths: false },
+      { removeAttrs: { attrs: 'stroke.*' } },
+      { removeTitle: true },
+    ],
+  });
+
   return new Promise(resolve => {
-    optimize(svg, {
-      plugins: [
-        { convertShapeToPath: false },
-        { mergePaths: false },
-        { removeAttrs: { attrs: 'stroke.*' } },
-        { removeTitle: true }
-      ]
-    }).then(({ data }) => resolve(data));
+    svgo.optimize(svg).then(({ data }) => resolve(data));
   });
 }
 
@@ -45,7 +47,7 @@ function removeSVGElement(svg) {
  * @param {Promise<string>}
  */
 async function processSvg(svg) {
-  const optimized = await optimizeSVG(svg)
+  const optimized = await optimize(svg)
     // remove semicolon inserted by prettier
     // because prettier thinks it's formatting JSX not HTML
     .then(svg => svg.replace(/;/g, ''))
