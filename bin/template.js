@@ -42,7 +42,7 @@ const getElementCode = (ComponentName, attrs, svgCode) => `
           default: "currentColor"
         }
       },
-      data(): {
+      data() {
         return {
           width: attrs.width,
           height: attrs.height
