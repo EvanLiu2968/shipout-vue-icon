@@ -18,7 +18,7 @@ jobs:
         node-version: '10.x'
     - run: yarn install
     - name: Figma Action
-      uses: primer/figma-action@v1.0.0-alpha.2
+      uses: primer/figma-action@v1.0.0-alpha.3
       with:
         args: "format=svg outputDir=./src/"
       env:
