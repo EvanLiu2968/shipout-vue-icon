@@ -1,6 +1,6 @@
 {
   "name": "@shipout/icon",
-  "version": "1.1.26",
+  "version": "1.1.27",
   "auther": "Cory K",
   "description": "ShipOut Vue Icon, Automation workflow with Figma",
   "main": "bundle/index.common.js",
