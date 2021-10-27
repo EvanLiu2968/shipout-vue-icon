@@ -33,7 +33,7 @@ const getElementCode = (ComponentName, attrs, iconData, svgCode) => `
       name: "Icon${ComponentName}",
       props: {
         size: {
-          type: Number
+          type: [String, Number]
         },
         color: {
           type: String,
